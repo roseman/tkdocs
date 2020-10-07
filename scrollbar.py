@@ -7,8 +7,7 @@ l.grid(column=0, row=0, sticky=(N,W,E,S))
 s = ttk.Scrollbar(root, orient=VERTICAL, command=l.yview)
 s.grid(column=1, row=0, sticky=(N,S))
 l['yscrollcommand'] = s.set
-ttk.Label(root, text="Status message here", anchor=(W)).grid(column=0, row=1, sticky=(W,E))
-ttk.Sizegrip(root).grid(column=1, row=1, sticky=(S,E))
+ttk.Label(root, text="Status message here", anchor=(W)).grid(column=0, columnspan=2, row=1, sticky=(W,E))
 root.grid_columnconfigure(0, weight=1)
 root.grid_rowconfigure(0, weight=1)
 for i in range(1,101):
