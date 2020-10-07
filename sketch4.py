@@ -7,7 +7,6 @@ v = ttk.Scrollbar(root, orient=VERTICAL)
 canvas = Canvas(root, scrollregion=(0, 0, 1000, 1000), yscrollcommand=v.set, xscrollcommand=h.set)
 h['command'] = canvas.xview
 v['command'] = canvas.yview
-ttk.Sizegrip(root).grid(column=1, row=1, sticky=(S,E))
 
 canvas.grid(column=0, row=0, sticky=(N,W,E,S))
 h.grid(column=0, row=1, sticky=(W,E))
