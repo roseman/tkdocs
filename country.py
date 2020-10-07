@@ -4,8 +4,8 @@ root = Tk()
 
 # Initialize our country "databases":
 #  - the list of country codes (a subset anyway)
-#  - a parallel list of country names, in the same order as the country codes
-#  - a hash table mapping country code to population<
+#  - parallel list of country names, same order as the country codes
+#  - a hash table mapping country code to population
 countrycodes = ('ar', 'au', 'be', 'br', 'ca', 'cn', 'dk', 'fi', 'fr', 'gr', 'in', 'it', 'jp', 'mx', 'nl', 'no', 'es', 'se', 'ch')
 countrynames = ('Argentina', 'Australia', 'Belgium', 'Brazil', 'Canada', 'China', 'Denmark', \
         'Finland', 'France', 'Greece', 'India', 'Italy', 'Japan', 'Mexico', 'Netherlands', 'Norway', 'Spain', \
@@ -63,26 +63,15 @@ root.grid_rowconfigure(0,weight=1)
 
 # Create the different widgets; note the variables that many
 # of them are bound to, as well as the button callback.
-# Note we're using the StringVar() 'cnames', constructed from 'countrynames'
-#SHOW <b>lbox</b> = Listbox(c, <b>listvariable=cnames</b>, height=5)
-#HIDE
+# We're using the StringVar() 'cnames', constructed from 'countrynames'
 lbox = Listbox(c, listvariable=cnames, height=5)
-#/HIDE
 lbl = ttk.Label(c, text="Send to country's leader:")
-#SHOW g1 = ttk.Radiobutton(c, text=gifts['card'], <b>variable=gift</b>, value='card')
-#SHOW g2 = ttk.Radiobutton(c, text=gifts['flowers'], <b>variable=gift</b>, value='flowers')
-#SHOW g3 = ttk.Radiobutton(c, text=gifts['nastygram'], <b>variable=gift</b>, value='nastygram')
-#SHOW send = ttk.Button(c, text='Send Gift', <b>command=sendGift</b>, default='active')
-#SHOW sentlbl = ttk.Label(c, <b>textvariable=sentmsg</b>, anchor='center')
-#SHOW status = ttk.Label(c, <b>textvariable=statusmsg</b>, anchor=W)
-#HIDE
 g1 = ttk.Radiobutton(c, text=gifts['card'], variable=gift, value='card')
 g2 = ttk.Radiobutton(c, text=gifts['flowers'], variable=gift, value='flowers')
 g3 = ttk.Radiobutton(c, text=gifts['nastygram'], variable=gift, value='nastygram')
 send = ttk.Button(c, text='Send Gift', command=sendGift, default='active')
 sentlbl = ttk.Label(c, textvariable=sentmsg, anchor='center')
 status = ttk.Label(c, textvariable=statusmsg, anchor=W)
-#/HIDE
 
 # Grid all the widgets
 lbox.grid(column=0, row=0, rowspan=6, sticky=(N,S,E,W))
@@ -109,7 +98,7 @@ for i in range(0,len(countrynames),2):
 # Set the starting state of the interface, including selecting the
 # default gift to send, and clearing the messages.  Select the first
 # country in the list; because the &lt;&lt;ListboxSelect&gt;&gt; event is only
-# generated when the user makes a change, we explicitly call showPopulation.
+# fired when users makes a change, we explicitly call showPopulation.
 gift.set('card')
 sentmsg.set('')
 statusmsg.set('')
@@ -117,13 +106,3 @@ lbox.selection_set(0)
 showPopulation()
 
 root.mainloop()
-#HIDE
-#update idletasks; update
-#$::lbox selection clear 0
-#$::lbox selection set 4
-#$::lbox yview scroll 2 units
-#wm geometry . [expr [winfo width .]+15]x[expr [winfo height .]+20]
-#showPopulation
-#set gift nastygram
-#sendGift
-#/HIDE
