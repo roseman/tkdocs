@@ -1,5 +1,6 @@
 from tkinter import *
 root = Tk()
+root.option_add('*tearOff', FALSE)
 menu = Menu(root)
 for i in ('One', 'Two', 'Three'):
     menu.add_command(label=i)
