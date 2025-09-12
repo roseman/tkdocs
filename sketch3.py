@@ -18,7 +18,7 @@ def setColor(newcolor):
 
 def addLine(event):
     global lastx, lasty
-    canvas.create_line((lastx, lasty, event.x, event.y), fill=color, width=5, tags='currentline')
+    canvas.create_line(lastx, lasty, event.x, event.y, fill=color, width=5, tags='currentline')
     lastx, lasty = event.x, event.y
 
 def doneStroke(event):
@@ -34,11 +34,11 @@ canvas.bind("<Button-1>", xy)
 canvas.bind("<B1-Motion>", addLine)
 canvas.bind("<B1-ButtonRelease>", doneStroke)
 
-id = canvas.create_rectangle((10, 10, 30, 30), fill="red", tags=('palette', 'palettered'))
+id = canvas.create_rectangle(10, 10, 30, 30, fill="red", tags=('palette', 'palettered'))
 canvas.tag_bind(id, "<Button-1>", lambda x: setColor("red"))
-id = canvas.create_rectangle((10, 35, 30, 55), fill="blue", tags=('palette', 'paletteblue'))
+id = canvas.create_rectangle(10, 35, 30, 55, fill="blue", tags=('palette', 'paletteblue'))
 canvas.tag_bind(id, "<Button-1>", lambda x: setColor("blue"))
-id = canvas.create_rectangle((10, 60, 30, 80), fill="black", tags=('palette', 'paletteblack', 'paletteSelected'))
+id = canvas.create_rectangle(10, 60, 30, 80, fill="black", tags=('palette', 'paletteblack', 'paletteSelected'))
 canvas.tag_bind(id, "<Button-1>", lambda x: setColor("black"))	
 
 root.mainloop()

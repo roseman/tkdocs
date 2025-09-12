@@ -1,11 +1,9 @@
 from tkinter import *
 root = Tk()
+if (root.tk.call('tk', 'windowingsystem')=='aqua'):
+    root.event_add('<<ContextMenu>>', '<Control-Button-1>')
 menu = Menu(root)
 for i in ('One', 'Two', 'Three'):
     menu.add_command(label=i)
-if (root.tk.call('tk', 'windowingsystem')=='aqua'):
-    root.bind('<2>', lambda e: menu.post(e.x_root, e.y_root))
-    root.bind('<Control-1>', lambda e: menu.post(e.x_root, e.y_root))
-else:
-    root.bind('<3>', lambda e: menu.post(e.x_root, e.y_root))
+root.bind('<<ContextMenu>>', lambda e: menu.post(e.x_root, e.y_root))
 root.mainloop()

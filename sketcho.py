@@ -11,7 +11,7 @@ class Sketchpad(Canvas):
         self.lastx, self.lasty = event.x, event.y
 
     def add_line(self, event):
-        self.create_line((self.lastx, self.lasty, event.x, event.y))
+        self.create_line(self.lastx, self.lasty, event.x, event.y)
         self.save_posn(event)
 
 root = Tk()
