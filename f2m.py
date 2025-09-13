@@ -1,12 +1,14 @@
 from tkinter import *
 from tkinter import ttk
 
+
 def calculate(*args):
     try:
         value = float(feet.get())
         meters.set(round(0.3048 * value, 4))
     except ValueError:
         pass
+
 
 root = Tk()
 root.title("Feet to Meters")
